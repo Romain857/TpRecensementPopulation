@@ -15,10 +15,11 @@ public class Recensement {
         this.villes = villes;
     }
 
-    public void addVille(int codeRegion, String nomRegion, String codeDepartement, int codeCommune, String nomCommune, int populationTotale){
+    public void addVille(int codeRegion, String nomRegion, String codeDepartement, int codeCommune, String nomCommune, int populationTotale) {
         villes.add(new Ville(codeRegion, nomRegion, codeDepartement, codeCommune, nomCommune, populationTotale));
     }
-    public Ville getville(String inputVille){
+
+    public Ville getville(String inputVille) {
         for (Ville ville : villes) {
             if (Objects.equals(ville.getNomCommune(), inputVille)) {
                 return ville;
@@ -26,7 +27,8 @@ public class Recensement {
         }
         return null;
     }
-    public int getDpPop(String codeDepartement){
+
+    public int getDpPop(String codeDepartement) {
         int totalpop = 0;
         for (Ville ville : villes) {
             if (Objects.equals(ville.getCodeDepartement(), codeDepartement)) {
@@ -35,7 +37,8 @@ public class Recensement {
         }
         return totalpop;
     }
-    public int getRegionPop(String regionName){
+
+    public int getRegionPop(String regionName) {
         int totalpop = 0;
         for (Ville ville : villes) {
             if (Objects.equals(ville.getNomRegion(), regionName)) {
@@ -43,5 +46,21 @@ public class Recensement {
             }
         }
         return totalpop;
+    }
+
+    public List<String> getTopVilles() {
+        List<String> listPopTotVille = new ArrayList<>();
+        int t = villes.size();
+        String tmp;
+        for (int i = 0; i < t - 1; i++) {
+            for (int j = t - 1; j > i; j--) {
+                if (villes.get(j - 1).getPopTotale() > villes.get(j).getPopTotale()) {
+                    tmp = String.valueOf(villes.get(j - 1).getPopTotale());
+                    listPopTotVille.set(j - 1, String.valueOf(villes.get(j).getPopTotale()));
+                    listPopTotVille.set(j, tmp);
+                }
+            }
+        }
+        return listPopTotVille;
     }
 }
