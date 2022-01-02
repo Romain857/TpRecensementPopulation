@@ -48,15 +48,15 @@ public class Recensement {
         return totalpop;
     }
 
-    public List<String> getTopVilles() {
-        List<String> listPopTotVille = new ArrayList<>();
-        int t = villes.size();
-        String tmp;
-        for (int i = 0; i < t - 1; i++) {
-            for (int j = t - 1; j > i; j--) {
-                if (villes.get(j - 1).getPopTotale() > villes.get(j).getPopTotale()) {
-                    tmp = String.valueOf(villes.get(j - 1).getPopTotale());
-                    listPopTotVille.set(j - 1, String.valueOf(villes.get(j).getPopTotale()));
+    public List<Ville> getTopVilles() {
+        List<Ville> listPopTotVille = villes;
+        int t = listPopTotVille.size();
+        Ville tmp;
+        for (int i = t-1; i >= 1; i--) {
+            for (int j = 0; j < i; j++) {
+                if (villes.get(j + 1).getPopTotale() > villes.get(j).getPopTotale()) {
+                    tmp = listPopTotVille.get(j + 1);
+                    listPopTotVille.set(j + 1, listPopTotVille.get(j));
                     listPopTotVille.set(j, tmp);
                 }
             }

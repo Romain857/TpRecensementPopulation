@@ -1,5 +1,6 @@
 package fr.epsi.b3.recensement;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class MenuService {
@@ -78,12 +79,15 @@ public class MenuService {
     //     }
     // }
 
-    // public void afficherTopVilles() {
-    //     System.out.println("TOP 10 Villes/pop. :");
-    //     for (int i = 1; i <= 10; i++) {
-    //         System.out.println(i+". " + recensement.getTopVilles()[i] +"\n");
-    //     }
-    // }
+    public void afficherTopVilles() {
+        System.out.println("loading...");
+        List<Ville> topVilles = recensement.getTopVilles();
+
+        System.out.println("\n\n\nTOP 10 Villes/pop. :\n");
+        for (int i = 1; i <= 10; i++) {           
+            System.out.println(i+". " + topVilles.get(i-1).getNomCommune() + " - " + topVilles.get(i-1).getPopTotale());
+        }
+    }
 
     // public void afficherTopVillesDp() {
     //     System.out.println("Quel département ?");
@@ -147,7 +151,7 @@ public class MenuService {
                 break;
             
             case 8:
-                    //afficherTopVilles();
+                    afficherTopVilles();
                 break;
             
             case 9:
