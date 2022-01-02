@@ -2,7 +2,7 @@ package fr.epsi.b3.recensement;
 
 import java.util.Scanner;
 
-public abstract class MenuService {
+public class MenuService {
 
     private Scanner scanner = new Scanner(System.in);
     private Recensement recensement;
@@ -25,7 +25,7 @@ public abstract class MenuService {
         System.out.println("Quelle ville ?");
         String inputVille = scanner.nextLine();
 
-        if (recensement.getVille(inputVille)) {
+        if (recensement.getVille(inputVille) != null) {
             Ville ville = recensement.getVille(inputVille);
             System.out.println("La ville " + ville.getNomCommune() + " a une population de " + ville.getPopTotale());
         }
@@ -39,7 +39,7 @@ public abstract class MenuService {
         System.out.println("Quel département ? (code)");
         String inputDp = scanner.nextLine();
 
-        if (recensement.getDpPop(inputDp)) {
+        if (recensement.getDpPop(inputDp) != 0) {
             System.out.println("Le département " +  inputDp + " a une population de " + recensement.getDpPop(inputDp));
         }
         else {
@@ -52,7 +52,7 @@ public abstract class MenuService {
         System.out.println("Quelle région ?");
         String inputRegion = scanner.nextLine();
 
-        if (recensement.getRegionPop(inputRegion)) {
+        if (recensement.getRegionPop(inputRegion) != 0) {
             System.out.println("La région " +  inputRegion + " a une population de " + recensement.getRegionPop(inputRegion));
         }
         else {
@@ -85,7 +85,7 @@ public abstract class MenuService {
         System.out.println("Quel département ?");
         String inputDp = scanner.nextLine();
 
-        if (recensement.getTopVillesDp(inputDp)) {
+        if (recensement.getTopVillesDp(inputDp) != null) {
             System.out.println("TOP 10 Villes/pop. du " + inputDp + " :");
             for (int i = 1; i <= 10; i++) {
                 System.out.println(i+". " + recensement.getTopVillesDp(inputDp)[i] +"\n");
@@ -100,7 +100,7 @@ public abstract class MenuService {
         System.out.println("Quelle région ?");
         String inputRegion = scanner.nextLine();
 
-        if (recensement.getTopVillesRegion(inputRegion)) {
+        if (recensement.getTopVillesRegion(inputRegion) != null) {
             System.out.println("TOP 10 Villes/pop. de " + inputRegion + " :");
             for (int i = 1; i <= 10; i++) {
                 System.out.println(i+". " + recensement.getTopVillesRegion(inputRegion)[i] +"\n");
