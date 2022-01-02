@@ -1,7 +1,6 @@
 package fr.epsi.b3.recensement;
 
 import java.io.*;
-import java.util.*;
 
 public class Application {
 
@@ -17,8 +16,5 @@ public class Application {
             ligne = line.split(";");
             recensement.addVille(Integer.parseInt(ligne[0]), ligne[1], ligne[2], Integer.parseInt(ligne[5]), ligne[6], Integer.parseInt(ligne[9].replaceAll("\s", "")));
         }
-
     }
-
-
 }
