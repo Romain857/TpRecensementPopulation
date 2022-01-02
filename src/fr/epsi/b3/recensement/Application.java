@@ -5,6 +5,8 @@ import java.io.*;
 public class Application {
 
     public static Recensement recensement = new Recensement();
+    public static MenuService affichage = new MenuService(recensement);
+
     public static void main(String[] args) throws IOException {
 
         String file = "../recensement_2016.csv";
@@ -16,5 +18,6 @@ public class Application {
             ligne = line.split(";");
             recensement.addVille(Integer.parseInt(ligne[0]), ligne[1], ligne[2], Integer.parseInt(ligne[5]), ligne[6], Integer.parseInt(ligne[9].replaceAll("\s", "")));
         }
+        affichage.afficherMenu();
     }
 }
