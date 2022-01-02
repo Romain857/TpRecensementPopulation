@@ -12,7 +12,7 @@ public class MenuService {
 
     public void afficherMenu() {
         int choix = 0;
-        while (0 > choix && choix > 9) {
+        while (0 > choix || choix > 9) {
             System.out.println("RECENSEMENT :\n1. Population d'une ville donnée\n2. Population d'un département donné\n3. Population d'une région donnée\n4. Afficher les 10 régions les plus peuplées\n5. Afficher les 10 départements les plus peuplés\n6. Afficher les 10 villes les plus peuplées d’un département\n7. Afficher les 10 villes les plus peuplées d’une région\n8. Afficher les 10 villes les plus peuplées de France\n9. Sortir");
             Scanner scanner = new Scanner(System.in);
             choix = scanner.nextInt();
