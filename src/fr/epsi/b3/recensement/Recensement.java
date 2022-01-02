@@ -35,4 +35,13 @@ public class Recensement {
         }
         return totalpop;
     }
+    public int getRegionPop(String regionName){
+        int totalpop = 0;
+        for (Ville ville : villes) {
+            if (Objects.equals(ville.getNomRegion(), regionName)) {
+                totalpop += ville.getPopTotale();
+            }
+        }
+        return totalpop;
+    }
 }
