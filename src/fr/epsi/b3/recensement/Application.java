@@ -6,6 +6,8 @@ import java.util.*;
 public class Application {
 
     public static Recensement recensement = new Recensement();
+    public static MenuService affichage = new MenuService(recensement);
+
     public static void main(String[] args) throws IOException {
 
         String file = "../recensement_2016.csv";
@@ -43,6 +45,8 @@ public class Application {
             Integer valeurCompteur = compteurs.get(nomCommune);
             System.out.println("Nom commune : " + nomCommune + " - Nombre de région : " + valeurCompteur);
         }
+
+        affichage.afficherMenu();
 
 //        String[] morceaux = ligne.split(";");
 //        String codeRegion = morceaux[0];
