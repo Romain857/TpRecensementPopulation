@@ -1,10 +1,50 @@
 package fr.epsi.b3.recensement;
 
+import java.io.*;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.util.*;
 
 public class Application {
-    public static void main(String[] args) {
+    @SuppressWarnings("rawtypes")
+    public static void main(String[] args) throws Exception{
         List<Ville> villes = new ArrayList<>();
+
+        String fileName= "/Users/romai/Desktop/recensement_2016.csv";
+        Scanner scanner = new Scanner(new File(fileName));
+        scanner.useDelimiter(",");
+        while(scanner.hasNext()){
+            System.out.print(scanner.next()+",");
+        }
+        scanner.close();
+
+        File file= new File(fileName);
+        List<List<String>> lines = new ArrayList<>();
+        Scanner inputStream;
+        try{
+            inputStream = new Scanner(file);
+
+            while(inputStream.hasNext()){
+                String line= inputStream.next();
+                String[] values = line.split(";");
+                lines.add(Arrays.asList(values));
+            }
+            inputStream.close();
+        }catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        int lineNo = 1;
+        for(List<String> line: lines) {
+            int columnNo = 1;
+            for (String value: line) {
+                System.out.println("Line " + lineNo + " Column " + columnNo + ": " + value);
+                columnNo++;
+            }
+            lineNo++;
+        }
+
         villes.add(new Ville(3, "PDLA", 85, 85000, "LRSY", 50000));
         villes.add(new Ville(12, "LA", 44, 44200, "Nantes", 300000));
         villes.add(new Ville(54, "RegionBraux", 1, 10000, "Braux", 5));
