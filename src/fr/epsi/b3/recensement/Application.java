@@ -1,14 +1,32 @@
 package fr.epsi.b3.recensement;
 
+import java.io.*;
 import java.util.*;
 
 public class Application {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         List<Ville> villes = new ArrayList<>();
-        villes.add(new Ville(3, "PDLA", 85, 85000, "LRSY", 50000));
-        villes.add(new Ville(12, "LA", 44, 44200, "Nantes", 300000));
-        villes.add(new Ville(54, "RegionBraux", 1, 10000, "Braux", 5));
-        villes.add(new Ville(54, "RegionBraux", 1, 10000, "Braux", 5));
+
+        String file = "/EPSI/B3/Java/Recensement/recensement_2016.csv";
+        String line;
+        List<String[]> tableaucsv = new ArrayList<>();
+        String [] ligne;
+        BufferedReader br = new BufferedReader(new FileReader(file));
+
+        while((line = br.readLine()) != null){
+            ligne = line.split(";");
+            tableaucsv.add(ligne);
+            System.out.println(ligne[6]);
+            villes.add(new Ville(Integer.parseInt(ligne[0]), ligne[1],ligne[2], Integer.parseInt(ligne[5]), ligne[6], Integer.parseInt(ligne[9].replaceAll("\s", ""))));
+        }
+        System.out.println(Arrays.toString(tableaucsv.get(13)));
+
+        villes.add(new Ville(3, "PDLA", "85", 85000, "LRSY", 50000));
+        villes.add(new Ville(12, "LA", "44", 44200, "Nantes", 300000));
+        villes.add(new Ville(54, "RegionBraux", "1", 10000, "Braux", 5));
+        villes.add(new Ville(54, "RegionBraux", "1", 10000, "Braux", 5));
+
+//        System.out.println(villes);
 
         HashMap<String, Integer> compteurs = new HashMap<>();
 
