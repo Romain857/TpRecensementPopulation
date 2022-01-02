@@ -18,8 +18,8 @@ public class Recensement {
     public void addVille(int codeRegion, String nomRegion, String codeDepartement, int codeCommune, String nomCommune, int populationTotale) {
         villes.add(new Ville(codeRegion, nomRegion, codeDepartement, codeCommune, nomCommune, populationTotale));
     }
-
-    public Ville getville(String inputVille) {
+  
+    public Ville getVille(String inputVille){
         for (Ville ville : villes) {
             if (Objects.equals(ville.getNomCommune(), inputVille)) {
                 return ville;
