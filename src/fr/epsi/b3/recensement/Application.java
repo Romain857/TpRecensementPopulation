@@ -12,12 +12,12 @@ public class Application {
         List<String[]> tableaucsv = new ArrayList<>();
         String [] ligne;
         BufferedReader br = new BufferedReader(new FileReader(file));
-
+        br.readLine();
         while((line = br.readLine()) != null){
             ligne = line.split(";");
             tableaucsv.add(ligne);
             System.out.println(ligne[6]);
-            villes.add(new Ville(Integer.parseInt(ligne[0]), ligne[1],ligne[2], Integer.parseInt(ligne[5]), ligne[6], Integer.parseInt(ligne[9].replaceAll("\s", ""))));
+            villes.add(new Ville(Integer.parseInt(ligne[0]), ligne[1], ligne[2], Integer.parseInt(ligne[5]), ligne[6], Integer.parseInt(ligne[9].replaceAll("\s", ""))));
         }
         System.out.println(Arrays.toString(tableaucsv.get(13)));
 
