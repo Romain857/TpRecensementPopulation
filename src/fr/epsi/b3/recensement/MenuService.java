@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 public class MenuService {
 
-    private Scanner scanner = new Scanner(System.in);
     private Recensement recensement;
 
     public MenuService(Recensement recensement) {
@@ -17,11 +16,13 @@ public class MenuService {
             
         }
         System.out.println("RECENSEMENT :\n1. Population d'une ville donnée\n2. Population d'un département donné\n3. Population d'une région donnée\n4. Afficher les 10 régions les plus peuplées\n5. Afficher les 10 départements les plus peuplés\n6. Afficher les 10 villes les plus peuplées d’un département\n7. Afficher les 10 villes les plus peuplées d’une région\n8. Afficher les 10 villes les plus peuplées de France\n9. Sortir");
+        Scanner scanner = new Scanner(System.in);
         choix = scanner.nextInt();
         selecteurChoix(choix);
     }
 
     public void afficherPopVille() {
+        Scanner scanner = new Scanner(System.in);
         System.out.println("Quelle ville ?");
         String inputVille = scanner.nextLine();
 
@@ -37,6 +38,7 @@ public class MenuService {
 
     public void afficherPopDepartement() {
         System.out.println("Quel département ? (code)");
+        Scanner scanner = new Scanner(System.in);
         String inputDp = scanner.nextLine();
 
         if (recensement.getDpPop(inputDp) != 0) {
@@ -50,6 +52,7 @@ public class MenuService {
     
     public void afficherPopRegion() {
         System.out.println("Quelle région ?");
+        Scanner scanner = new Scanner(System.in);
         String inputRegion = scanner.nextLine();
 
         if (recensement.getRegionPop(inputRegion) != 0) {
@@ -60,56 +63,58 @@ public class MenuService {
         }
     }
 
-    public void afficherTopRegion() {
-        System.out.println("TOP 10 Régions/pop. :");
-        for (int i = 1; i <= 10; i++) {
-            System.out.println(i+". " + recensement.getTopRegions()[i] +"\n");
-        }
-    }
+    // public void afficherTopRegion() {
+    //     System.out.println("TOP 10 Régions/pop. :");
+    //     for (int i = 1; i <= 10; i++) {
+    //         System.out.println(i+". " + recensement.getTopRegions()[i] +"\n");
+    //     }
+    // }
 
-    public void afficherTopDp() {
-        System.out.println("TOP 10 Départements/pop. :");
-        for (int i = 0; i < 10; i++) {
-            System.out.println(i+". " + recensement.getTopDp()[i] +"\n");
-        }
-    }
+    // public void afficherTopDp() {
+    //     System.out.println("TOP 10 Départements/pop. :");
+    //     for (int i = 0; i < 10; i++) {
+    //         System.out.println(i+". " + recensement.getTopDp()[i] +"\n");
+    //     }
+    // }
 
-    public void afficherTopVilles() {
-        System.out.println("TOP 10 Villes/pop. :");
-        for (int i = 1; i <= 10; i++) {
-            System.out.println(i+". " + recensement.getTopVilles()[i] +"\n");
-        }
-    }
+    // public void afficherTopVilles() {
+    //     System.out.println("TOP 10 Villes/pop. :");
+    //     for (int i = 1; i <= 10; i++) {
+    //         System.out.println(i+". " + recensement.getTopVilles()[i] +"\n");
+    //     }
+    // }
 
-    public void afficherTopVillesDp() {
-        System.out.println("Quel département ?");
-        String inputDp = scanner.nextLine();
+    // public void afficherTopVillesDp() {
+    //     System.out.println("Quel département ?");
+    //     Scanner scanner = new Scanner(System.in);
+    //     String inputDp = scanner.nextLine();
 
-        if (recensement.getTopVillesDp(inputDp) != null) {
-            System.out.println("TOP 10 Villes/pop. du " + inputDp + " :");
-            for (int i = 1; i <= 10; i++) {
-                System.out.println(i+". " + recensement.getTopVillesDp(inputDp)[i] +"\n");
-            }
-        }        
-        else {
-            System.out.println("Ce département n'existe pas !");
-        }
-    }
+    //     if (recensement.getTopVillesDp(inputDp) != null) {
+    //         System.out.println("TOP 10 Villes/pop. du " + inputDp + " :");
+    //         for (int i = 1; i <= 10; i++) {
+    //             System.out.println(i+". " + recensement.getTopVillesDp(inputDp)[i] +"\n");
+    //         }
+    //     }        
+    //     else {
+    //         System.out.println("Ce département n'existe pas !");
+    //     }
+    // }
 
-    public void afficherTopVillesRegion() {
-        System.out.println("Quelle région ?");
-        String inputRegion = scanner.nextLine();
+    // public void afficherTopVillesRegion() {
+    //     System.out.println("Quelle région ?");
+    //     Scanner scanner = new Scanner(System.in);
+    //     String inputRegion = scanner.nextLine();
 
-        if (recensement.getTopVillesRegion(inputRegion) != null) {
-            System.out.println("TOP 10 Villes/pop. de " + inputRegion + " :");
-            for (int i = 1; i <= 10; i++) {
-                System.out.println(i+". " + recensement.getTopVillesRegion(inputRegion)[i] +"\n");
-            }
-        }
-        else {
-            System.out.println("Cette région n'existe pas !");
-        }
-    }
+    //     if (recensement.getTopVillesRegion(inputRegion) != null) {
+    //         System.out.println("TOP 10 Villes/pop. de " + inputRegion + " :");
+    //         for (int i = 1; i <= 10; i++) {
+    //             System.out.println(i+". " + recensement.getTopVillesRegion(inputRegion)[i] +"\n");
+    //         }
+    //     }
+    //     else {
+    //         System.out.println("Cette région n'existe pas !");
+    //     }
+    // }
 
     public void sortir() {
         System.out.println("Adios.");
@@ -127,21 +132,21 @@ public class MenuService {
                     afficherPopRegion();
                 break;
             case 4:
-                    afficherTopRegion();
+                    //afficherTopRegion();
                 break;
             case 5:
-                    afficherTopDp();
+                    //afficherTopDp();
                 break;
             case 6:
-                    afficherTopVillesDp();
+                    //afficherTopVillesDp();
                 break;
             
             case 7:
-                    afficherTopVillesRegion();
+                    //afficherTopVillesRegion();
                 break;
             
             case 8:
-                    afficherTopVilles();
+                    //afficherTopVilles();
                 break;
             
             case 9:
