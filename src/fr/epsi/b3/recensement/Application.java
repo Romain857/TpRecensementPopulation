@@ -7,7 +7,7 @@ public class Application {
     public static void main(String[] args) throws IOException {
         List<Ville> villes = new ArrayList<>();
 
-        String file = "/EPSI/B3/Java/Recensement/recensement_2016.csv";
+        String file = "../recensement_2016.csv";
         String line;
         List<String[]> tableaucsv = new ArrayList<>();
         String [] ligne;
