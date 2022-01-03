@@ -30,7 +30,7 @@ public class MenuService {
 
         if (recensement.getVille(inputVille) != null) {
             Ville ville = recensement.getVille(inputVille);
-            System.out.println("La ville " + ville.getNomCommune() + " a une population de " + ville.getPopTotale() + " habitants.");
+            System.out.println("La ville " + ville.getNomCommune() + " a une population de " + ville.getPopTotale() + " habitants");
         }
         else {
             System.out.println("Cette ville n'existe pas !");
@@ -44,7 +44,7 @@ public class MenuService {
         String inputDp = scanner.nextLine();
 
         if (recensement.getDpPop(inputDp) != 0) {
-            System.out.println("Le département " +  inputDp + " a une population de " + recensement.getDpPop(inputDp) + " habitants.");
+            System.out.println("Le département " +  inputDp + " a une population de " + recensement.getDpPop(inputDp) + " habitants");
         }
         else {
             System.out.println("Ce département n'existe pas !");
@@ -58,7 +58,7 @@ public class MenuService {
         String inputRegion = scanner.nextLine();
 
         if (recensement.getRegionPop(inputRegion) != 0) {
-            System.out.println("La région " +  inputRegion + " a une population de " + recensement.getRegionPop(inputRegion) + " habitants.");
+            System.out.println("La région " +  inputRegion + " a une population de " + recensement.getRegionPop(inputRegion) + " habitants");
         }
         else {
             System.out.println("Cette région n'existe pas !");
@@ -85,7 +85,7 @@ public class MenuService {
 
         System.out.println("\n\n\nTOP 10 Villes/pop. :\n");
         for (int i = 1; i <= 10; i++) {           
-            System.out.println(i+". " + topVilles.get(i-1).getNomCommune() + " - " + topVilles.get(i-1).getPopTotale());
+            System.out.println(i+". " + topVilles.get(i-1).getNomCommune() + " - " + topVilles.get(i-1).getPopTotale() + " habitants");
         }
     }
 
@@ -93,12 +93,12 @@ public class MenuService {
          System.out.println("Quel département ?");
          Scanner scanner = new Scanner(System.in);
          String inputDp = scanner.nextLine();
-         List<Ville> topVillesDp = recensement.getTopVillesDp(inputDp);
 
-         if (topVillesDp != null) {
-             System.out.println("TOP 10 Villes/pop. du " + inputDp + " :");
+         if (recensement.getTopVillesDp(inputDp).size() >= 10) {
+            List<Ville> topVillesDp = recensement.getTopVillesDp(inputDp);
+             System.out.println("\n\n\nTOP 10 Villes/pop. du " + inputDp + " :\n");
              for (int i = 1; i <= 10; i++) {
-                 System.out.println(i+". " + topVillesDp.get(i - 1).getNomCommune() + " - " + topVillesDp.get(i - 1).getPopTotale() +"\n");
+                 System.out.println(i+". " + topVillesDp.get(i - 1).getNomCommune() + " - " + topVillesDp.get(i - 1).getPopTotale() +" habitants");
              }
          }
          else {
@@ -110,13 +110,13 @@ public class MenuService {
          System.out.println("Quelle région ?");
          Scanner scanner = new Scanner(System.in);
          String inputRegion = scanner.nextLine();
-         List<Ville> topVillesRegion = recensement.getTopVillesRegion(inputRegion);
 
-         if (recensement.getTopVillesRegion(inputRegion) != null) {
-             System.out.println("TOP 10 Villes/pop. de " + inputRegion + " :");
-             for (int i = 1; i <= 10; i++) {
-                 System.out.println(i+". " + topVillesRegion.get(i - 1).getNomCommune() + " - " + topVillesRegion.get(i - 1).getPopTotale() +"\n");
-             }
+         if (recensement.getTopVillesRegion(inputRegion).size() >= 10) {
+            List<Ville> topVillesRegion = recensement.getTopVillesRegion(inputRegion);
+            System.out.println("TOP 10 Villes/pop. de " + inputRegion + " :");
+            for (int i = 1; i <= 10; i++) {
+                System.out.println(i+". " + topVillesRegion.get(i - 1).getNomCommune() + " - " + topVillesRegion.get(i - 1).getPopTotale() +" habitants");
+            }
          }
          else {
              System.out.println("Cette région n'existe pas !");
