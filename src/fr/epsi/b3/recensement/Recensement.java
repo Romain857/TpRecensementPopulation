@@ -18,8 +18,8 @@ public class Recensement {
     public void addVille(int codeRegion, String nomRegion, String codeDepartement, int codeCommune, String nomCommune, int populationTotale) {
         villes.add(new Ville(codeRegion, nomRegion, codeDepartement, codeCommune, nomCommune, populationTotale));
     }
-  
-    public Ville getVille(String inputVille){
+
+    public Ville getVille(String inputVille) {
         for (Ville ville : villes) {
             if (Objects.equals(ville.getNomCommune(), inputVille)) {
                 return ville;
@@ -52,7 +52,7 @@ public class Recensement {
         List<Ville> listPopTotVille = villes;
         int t = listPopTotVille.size();
         Ville tmp;
-        for (int i = t-1; i >= 1; i--) {
+        for (int i = t - 1; i >= 1; i--) {
             for (int j = 0; j < i; j++) {
                 if (villes.get(j + 1).getPopTotale() > villes.get(j).getPopTotale()) {
                     tmp = listPopTotVille.get(j + 1);
@@ -62,5 +62,47 @@ public class Recensement {
             }
         }
         return listPopTotVille;
+    }
+
+    public List<Ville> getTopVillesDp(String codeDp) {
+        List<Ville> listTopVilleDp = new ArrayList<Ville>();
+        for (Ville ville : villes) {
+            if (Objects.equals(ville.getCodeDepartement(), codeDp)) {
+                listTopVilleDp.add(ville);
+            }
+        }
+        int t = listTopVilleDp.size();
+        Ville tmp;
+        for (int i = t - 1; i >= 1; i--) {
+            for (int j = 0; j < i; j++) {
+                if (listTopVilleDp.get(j + 1).getPopTotale() > listTopVilleDp.get(j).getPopTotale()) {
+                    tmp = listTopVilleDp.get(j + 1);
+                    listTopVilleDp.set(j + 1, listTopVilleDp.get(j));
+                    listTopVilleDp.set(j, tmp);
+                }
+            }
+        }
+        return listTopVilleDp;
+    }
+
+    public List<Ville> getTopVillesRegion(String nomRegion) {
+        List<Ville> listTopVilleRegion = new ArrayList<Ville>();
+        for (Ville ville : villes) {
+            if (Objects.equals(ville.getNomRegion(), nomRegion)) {
+                listTopVilleRegion.add(ville);
+            }
+        }
+        int t = listTopVilleRegion.size();
+        Ville tmp;
+        for (int i = t - 1; i >= 1; i--) {
+            for (int j = 0; j < i; j++) {
+                if (listTopVilleRegion.get(j + 1).getPopTotale() > listTopVilleRegion.get(j).getPopTotale()) {
+                    tmp = listTopVilleRegion.get(j + 1);
+                    listTopVilleRegion.set(j + 1, listTopVilleRegion.get(j));
+                    listTopVilleRegion.set(j, tmp);
+                }
+            }
+        }
+        return listTopVilleRegion;
     }
 }
