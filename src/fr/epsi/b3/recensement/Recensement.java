@@ -65,7 +65,7 @@ public class Recensement {
     }
 
     public List<Ville> getTopVillesDp(String codeDp) {
-        List<Ville> listTopVilleDp = villes;
+        List<Ville> listTopVilleDp = new ArrayList<Ville>();
         for (Ville ville : villes) {
             if (Objects.equals(ville.getCodeDepartement(), codeDp)) {
                 listTopVilleDp.add(ville);
