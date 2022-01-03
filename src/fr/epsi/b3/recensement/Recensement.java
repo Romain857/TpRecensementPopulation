@@ -64,6 +64,41 @@ public class Recensement {
         return listPopTotVille;
     }
 
+    public List<Region> getTopRegions() {
+        List<Region> listPopTotRegions = new ArrayList<Region>();
+        
+        for (Ville ville : villes) {
+            boolean regionExist = false;
+            if (listPopTotRegions.size() != 0) {
+                for (Region region : listPopTotRegions) {
+                    if (ville.getNomRegion() == region.getNom()) {
+                        region.addPopulation(ville.getPopTotale());
+                        regionExist = true;
+                    }
+                }
+                if (!regionExist) {
+                    listPopTotRegions.add(new Region(ville.getNomRegion(), ville.getPopTotale()));
+                }
+            }
+            else {
+                listPopTotRegions.add(new Region(ville.getNomRegion(), ville.getPopTotale()));
+            }
+        }
+
+        int t = listPopTotRegions.size();
+        Region tmp;
+        for (int i = t - 1; i >= 1; i--) {
+            for (int j = 0; j < i; j++) {
+                if (listPopTotRegions.get(j + 1).getPopulation() > listPopTotRegions.get(j).getPopulation()) {
+                    tmp = listPopTotRegions.get(j + 1);
+                    listPopTotRegions.set(j + 1, listPopTotRegions.get(j));
+                    listPopTotRegions.set(j, tmp);
+                }
+            }
+        }
+        return listPopTotRegions;
+    }
+
     public List<Ville> getTopVillesDp(String codeDp) {
         List<Ville> listTopVilleDp = new ArrayList<Ville>();
         for (Ville ville : villes) {

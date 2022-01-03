@@ -4,6 +4,11 @@ public class Region {
     private String nom;
     private int population;
     
+    public Region(String nom, int population) {
+        this.nom = nom;
+        this.population = population;
+    }
+    
     public String getNom() {
         return nom;
     }
@@ -13,7 +18,7 @@ public class Region {
     public int getPopulation() {
         return population;
     }
-    public void setPopulation(int population) {
-        this.population = population;
+    public void addPopulation(int population) {
+        this.population += population;
     }
 }
