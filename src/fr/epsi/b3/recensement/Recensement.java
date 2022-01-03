@@ -71,17 +71,38 @@ public class Recensement {
                 listTopVilleDp.add(ville);
             }
         }
-//        int t = listTopVilleDp.size();
-//        Ville tmp;
-//        for (int i = t - 1; i >= 1; i--) {
-//            for (int j = 0; j < i; j++) {
-//                if (villes.get(j + 1).getPopTotale() > villes.get(j).getPopTotale()) {
-//                    tmp = listTopVilleDp.get(j + 1);
-//                    listTopVilleDp.set(j + 1, listTopVilleDp.get(j));
-//                    listTopVilleDp.set(j, tmp);
-//                }
-//            }
-//        }
+        int t = listTopVilleDp.size();
+        Ville tmp;
+        for (int i = t - 1; i >= 1; i--) {
+            for (int j = 0; j < i; j++) {
+                if (listTopVilleDp.get(j + 1).getPopTotale() > listTopVilleDp.get(j).getPopTotale()) {
+                    tmp = listTopVilleDp.get(j + 1);
+                    listTopVilleDp.set(j + 1, listTopVilleDp.get(j));
+                    listTopVilleDp.set(j, tmp);
+                }
+            }
+        }
         return listTopVilleDp;
+    }
+
+    public List<Ville> getTopVillesRegion(String nomRegion) {
+        List<Ville> listTopVilleRegion = new ArrayList<Ville>();
+        for (Ville ville : villes) {
+            if (Objects.equals(ville.getNomRegion(), nomRegion)) {
+                listTopVilleRegion.add(ville);
+            }
+        }
+        int t = listTopVilleRegion.size();
+        Ville tmp;
+        for (int i = t - 1; i >= 1; i--) {
+            for (int j = 0; j < i; j++) {
+                if (listTopVilleRegion.get(j + 1).getPopTotale() > listTopVilleRegion.get(j).getPopTotale()) {
+                    tmp = listTopVilleRegion.get(j + 1);
+                    listTopVilleRegion.set(j + 1, listTopVilleRegion.get(j));
+                    listTopVilleRegion.set(j, tmp);
+                }
+            }
+        }
+        return listTopVilleRegion;
     }
 }

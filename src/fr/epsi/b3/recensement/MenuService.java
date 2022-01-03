@@ -106,21 +106,22 @@ public class MenuService {
          }
      }
 
-    // public void afficherTopVillesRegion() {
-    //     System.out.println("Quelle région ?");
-    //     Scanner scanner = new Scanner(System.in);
-    //     String inputRegion = scanner.nextLine();
+     public void afficherTopVillesRegion() {
+         System.out.println("Quelle région ?");
+         Scanner scanner = new Scanner(System.in);
+         String inputRegion = scanner.nextLine();
+         List<Ville> topVillesRegion = recensement.getTopVillesRegion(inputRegion);
 
-    //     if (recensement.getTopVillesRegion(inputRegion) != null) {
-    //         System.out.println("TOP 10 Villes/pop. de " + inputRegion + " :");
-    //         for (int i = 1; i <= 10; i++) {
-    //             System.out.println(i+". " + recensement.getTopVillesRegion(inputRegion)[i] +"\n");
-    //         }
-    //     }
-    //     else {
-    //         System.out.println("Cette région n'existe pas !");
-    //     }
-    // }
+         if (recensement.getTopVillesRegion(inputRegion) != null) {
+             System.out.println("TOP 10 Villes/pop. de " + inputRegion + " :");
+             for (int i = 1; i <= 10; i++) {
+                 System.out.println(i+". " + topVillesRegion.get(i - 1).getNomCommune() + " - " + topVillesRegion.get(i - 1).getPopTotale() +"\n");
+             }
+         }
+         else {
+             System.out.println("Cette région n'existe pas !");
+         }
+     }
 
     public void sortir() {
         System.out.println("Adios.");
@@ -148,7 +149,7 @@ public class MenuService {
                 break;
             
             case 7:
-                    //afficherTopVillesRegion();
+                    afficherTopVillesRegion();
                 break;
             
             case 8:
