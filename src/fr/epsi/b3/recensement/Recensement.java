@@ -105,4 +105,38 @@ public class Recensement {
         }
         return listTopVilleRegion;
     }
+    public List<Departement> getTopDp() {
+        List<Departement> listTopDepartement = new ArrayList<Departement>();
+
+        for (Ville ville : villes) {
+            boolean dpExist = false;
+            if (listTopDepartement.size() != 0) {
+                for (Departement dp : listTopDepartement) {
+                    if (Objects.equals(ville.getCodeDepartement(), dp.getCodeDp())) {
+                        dp.addPopulation(ville.getPopTotale());
+                        dpExist = true;
+                    }
+                }
+                if (!dpExist) {
+                    listTopDepartement.add(new Departement(ville.getPopTotale(), ville.getCodeDepartement()));
+                }
+            }
+            else {
+                listTopDepartement.add(new Departement(ville.getPopTotale(), ville.getCodeDepartement()));
+            }
+        }
+
+        int t = listTopDepartement.size();
+        Departement tmp;
+        for (int i = t - 1; i >= 1; i--) {
+            for (int j = 0; j < i; j++) {
+                if (listTopDepartement.get(j + 1).getPopulation() > listTopDepartement.get(j).getPopulation()) {
+                    tmp = listTopDepartement.get(j + 1);
+                    listTopDepartement.set(j + 1, listTopDepartement.get(j));
+                    listTopDepartement.set(j, tmp);
+                }
+            }
+        }
+        return listTopDepartement;
+    }
 }
