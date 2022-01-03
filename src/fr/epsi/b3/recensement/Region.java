@@ -18,7 +18,7 @@ public class Region {
     public int getPopulation() {
         return population;
     }
-    public void setPopulation(int population) {
-        this.population = population;
+    public void addPopulation(int population) {
+        this.population += population;
     }
 }
