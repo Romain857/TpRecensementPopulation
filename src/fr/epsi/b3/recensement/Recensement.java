@@ -6,6 +6,7 @@ import java.util.Objects;
 
 public class Recensement {
     private List<Ville> villes = new ArrayList<>();
+    private List<Departement> departements = new ArrayList<>();
 
     public List<Ville> getVilles() {
         return villes;
@@ -62,5 +63,25 @@ public class Recensement {
             }
         }
         return listPopTotVille;
+    }
+
+    public List<Departement> getTopDp(){
+        List<Departement> listTopDp = new ArrayList<>();
+        for(int dp = 1; dp<=95; dp++) {
+            int habParDep = getDpPop(String.valueOf(dp));
+            int t = departement.size();
+            Integer tmp;
+            departement.add(habParDep);
+            for (int i = t-1; i >= 1; i--) {
+                for (int j = 0; j < i; j++) {
+                    if (departement.get(j + 1) > habParDep) {
+                        tmp = departement.get(j + 1);
+                        departement.set(j + 1, habParDep);
+                        departement.set(j, tmp);
+                    }
+                }
+            }
+        }
+        return departement;
     }
 }
