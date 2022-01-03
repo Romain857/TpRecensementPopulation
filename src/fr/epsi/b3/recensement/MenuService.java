@@ -75,12 +75,15 @@ public class MenuService {
         }
     }
 
-    // public void afficherTopDp() {
-    //     System.out.println("TOP 10 Départements/pop. :");
-    //     for (int i = 0; i < 10; i++) {
-    //         System.out.println(i+". " + recensement.getTopDp()[i] +"\n");
-    //     }
-    // }
+     public void afficherTopDp() {
+         System.out.println("loading...");
+         List<Departement> topDepartement = recensement.getTopDp();
+
+         System.out.println("\n\n\nTOP 10 Départements/pop. :\n");
+         for (int i = 1; i <= 10; i++) {
+             System.out.println(i+". Département n°" + topDepartement.get(i-1).getCodeDp() + " - " + topDepartement.get(i-1).getPopulation() + " habitants");
+         }
+     }
 
     public void afficherTopVilles() {
         System.out.println("loading...");
@@ -145,7 +148,7 @@ public class MenuService {
                     afficherTopRegion();
                 break;
             case 5:
-                    //afficherTopDp();
+                    afficherTopDp();
                 break;
             case 6:
                     afficherTopVillesDp();

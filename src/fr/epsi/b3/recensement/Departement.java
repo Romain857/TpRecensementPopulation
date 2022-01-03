@@ -3,7 +3,13 @@ package fr.epsi.b3.recensement;
 public class Departement {
     private String codeDp;
     private int population;
-    
+
+    public Departement(int population, String codeDp) {
+        this.population = population;
+        this.codeDp = codeDp;
+    }
+
+
     public String getCodeDp() {
         return codeDp;
     }
@@ -13,7 +19,7 @@ public class Departement {
     public int getPopulation() {
         return population;
     }
-    public void setPopulation(int population) {
-        this.population = population;
+    public void addPopulation(int population) {
+        this.population += population;
     }
 }
